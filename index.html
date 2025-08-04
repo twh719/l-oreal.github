@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L’Oréal Smart Routine Builder</title>
+
+  <!-- ✅ Google Fonts for Branding -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- ✅ External CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ✅ Favicon (optional) -->
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/L%27Or%C3%A9al_logo.svg/320px-L%27Or%C3%A9al_logo.svg.png" type="image/png" />
+</head>
+<body>
+  <div style="width:100%; text-align:center; margin:32px 0 24px;">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/9/9d/L%27Or%C3%A9al_logo.svg"
+      alt="L’Oréal Logo"
+      style="height: 60px;"
+      role="img"
+      aria-label="L’Oréal Logo"
+      draggable="false"
+    />
+  </div>
+
+  <header class="header" role="banner">
+    <h1>L’Oréal Smart Routine Builder</h1>
+    <p>Create your personalized skincare routine powered by AI</p>
+  </header>
+
+  <main role="main">
+    <!-- ✅ User Input Section -->
+    <section id="user-form" aria-labelledby="user-form-heading">
+      <h2 id="user-form-heading">Tell Us About You</h2>
+      <form id="routine-form" aria-describedby="routine-form-desc" novalidate>
+        <p id="routine-form-desc" class="sr-only">Provide your skin type, concerns, and age range to get a personalized skincare routine.</p>
+
+        <label for="skinType">Skin Type:</label>
+        <select id="skinType" name="skinType" required aria-required="true" aria-describedby="skinType-help">
+          <option value="" disabled selected>Select...</option>
+          <option value="normal">Normal</option>
+          <option value="dry">Dry</option>
+          <option value="oily">Oily</option>
+          <option value="combination">Combination</option>
+          <option value="sensitive">Sensitive</option>
+        </select>
+        <small id="skinType-help" class="sr-only">Choose your skin type from the list.</small>
+
+        <label for="concerns">Skin Concerns:</label>
+        <input
+          type="text"
+          id="concerns"
+          name="concerns"
+          placeholder="e.g., acne, wrinkles, dark spots"
+          required
+          aria-required="true"
+          aria-describedby="concerns-help"
+          autocomplete="off"
+        />
+        <small id="concerns-help" class="sr-only">Enter your main skin concerns separated by commas.</small>
+
+        <label for="age">Age Range:</label>
+        <select id="age" name="age" required aria-required="true" aria-describedby="age-help">
+          <option value="" disabled selected>Select...</option>
+          <option value="18-24">18–24</option>
+          <option value="25-34">25–34</option>
+          <option value="35-44">35–44</option>
+          <option value="45+">45+</option>
+        </select>
+        <small id="age-help" class="sr-only">Choose your age range from the list.</small>
+
+        <button type="submit">Build My Routine</button>
+      </form>
+    </section>
+
+    <!-- ✅ Routine Output Section -->
+    <section id="routine-output" class="hidden" aria-live="polite" aria-labelledby="routine-output-heading">
+      <h2 id="routine-output-heading">Your Personalized Routine</h2>
+      <div id="routine-steps" class="routine-grid" role="list"></div>
+    </section>
+
+    <!-- ✅ Chatbot Section -->
+    <section id="chatbot" aria-labelledby="chatbot-heading">
+      <h2 id="chatbot-heading">Ask a Question</h2>
+      <div id="chat-window" role="region" aria-live="polite" aria-label="Chatbot conversation window">
+        <div id="chat-log" role="log" aria-relevant="additions"></div>
+        <form id="chat-form" aria-label="Send a message to L’Oréal Bot">
+          <input
+            type="text"
+            id="chat-input"
+            name="chat-input"
+            placeholder="Ask about a product or routine..."
+            autocomplete="off"
+            aria-required="true"
+            required
+          />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>© 2025 L’Oréal. Smart Routine Builder powered by AI.</p>
+  </footer>
+
+  <!-- ✅ Scripts -->
+  <script src="secrets.js"></script> <!-- for your API key -->
+  <script src="script.js"></script>
+</body>
+</html>
