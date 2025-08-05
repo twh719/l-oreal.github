@@ -133,20 +133,23 @@ function replaceTypingWithResponse(text) {
 
 // ✅ Send Prompt to OpenAI API
 async function fetchAIResponse(prompt) {
-  if (!window.OPENAI_API_KEY) {
-    throw new Error("OpenAI API key is missing");
+  if (!apikey) {
+    throw new Error("API key is missing");
   }
 
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${window.OPENAI_API_KEY}`
+      'Authorization': `Bearer ${apikey}`
     },
     body: JSON.stringify({
       model: 'gpt-3.5-turbo',
       messages: [
-        { role: "system", content: "You are a helpful L’Oréal skincare assistant. Provide personalized product recommendations and skincare routines based on L’Oréal products." },
+        {
+          role: "system",
+          content: "You are a helpful L’Oréal skincare assistant. Provide personalized product recommendations and skincare routines based on L’Oréal products."
+        },
         { role: 'user', content: prompt }
       ],
       temperature: 0.7
